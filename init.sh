@@ -79,7 +79,7 @@ function vim_cfg() {
 function emacs_cfg() {
     yay -S --noconfirm emacs
 	rm -rf ~/.emacs.d
-	ln -s "$dotfiles_dir"/.emacs.d ~/.emacs.d
+	git clone https://github.com/jas0nt/.emacs.d.git ~/.emacs.d
 }
 
 function fish_cfg() {
