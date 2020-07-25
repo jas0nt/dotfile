@@ -8,6 +8,7 @@ endif
 ""Plugins""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
+Plug 'dracula/vim'
 Plug 'godlygeek/tabular'
 Plug 'ianva/vim-youdao-translater'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
@@ -101,7 +102,7 @@ filetype indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui')
-    color solarized             " theme 
+    color dracula             " theme 
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
