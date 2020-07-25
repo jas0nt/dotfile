@@ -131,6 +131,7 @@ function main() {
     pacman_cfg
 	dot_cfg
     vim_cfg
+    emacs_cfg
     fish_cfg
     im_cfg
     cli_cfg
