@@ -89,25 +89,12 @@ function fish_cfg() {
 }
 
 
-function rime_cfg() {
-    # 下载fcitx5与rime
-    yay -S --noconfirm fcitx5-git fcitx5-qt5-git fcitx5-qt4-git fcitx5-gtk fcitx5-config-qt-git fcitx5-rime rime-double-pinyin rime-emoji
+function im_cfg() {
+	yay -S --noconfirm fcitx-im fcitx-configtool
+	yay -S --noconfirm fcitx-googlepinyin
 
-    # 下载fcitx5皮肤
-    makedir ~/.local/share/fcitx5/themes
-    git clone https://github.com/weearc/fcitx5-skin-simple-blue.git  ~/.local/share/fcitx5/themes/simple-blue
-    git clone https://github.com/hosxy/fcitx5-dark-transparent.git ~/.local/share/fcitx5/themes/fcitx5-dark-transparent
-
-    # 安装配置与词库
-    makedir ~/.local/share/fcitx5/rime
-    git submodule update --init
-    cp -rv rime-dict/* ~/.local/share/fcitx5/rime
-
-    # 安装fcitx5配置
-    cp -rv fcitx5 ~/.config
-
-    # 让桌面程序使用fcitx5输入框架
-    echo -e 'export GTK_IM_MODULE=fcitx5\nexport QT_IM_MODULE=fcitx5\nexport XMODIFIERS="@im=fcitx5"\nfcitx5 > /dev/null &\ndevilspie &' > ~/.xprofile
+	ln -s "$dotfiles_dir"/.xprofile ~/.xprofile
+	ln -s "$dotfiles_dir"/.profile ~/.profile
 }
 
 function cli_cfg() {
@@ -145,7 +132,7 @@ function main() {
 	dot_cfg
     vim_cfg
     fish_cfg
-    rime_cfg
+    im_cfg
     cli_cfg
     desktop_cfg
 
