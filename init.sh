@@ -78,7 +78,7 @@ function vim_cfg() {
 
 function fish_cfg() {
     # 安装插件配置
-    yay -S --noconfirm thefuck autojump
+    yay -S --noconfirm fish thefuck autojump
 	chsh -s $(which fish)
 }
 
@@ -136,6 +136,7 @@ function main() {
     export dotfiles_dir
     system_cfg
     pacman_cfg
+	dot_cfg
     vim_cfg
     fish_cfg
     rime_cfg
