@@ -61,9 +61,17 @@ function pacman_cfg() {
     sudo systemctl enable --now paccache.timer
 }
 
+function dot_cfg() {
+	rm -rf ~/.i3
+	rm -rf ~/.Xmodmap
+	ln -s "$dotfiles_dir"/.i3 ~/.i3
+	ln -s "$dotfiles_dir"/.Xmodmap ~/.Xmodmap
+}
+
 function vim_cfg() {
     yay -S --noconfirm vim
 
+	rm -rf ~/.vimrc
 	ln -s "$dotfiles_dir"/.vimrc ~/.vimrc
 
 }
