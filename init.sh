@@ -76,6 +76,12 @@ function vim_cfg() {
 
 }
 
+function emacs_cfg() {
+    yay -S --noconfirm emacs
+	rm -rf ~/.emacs.d
+	ln -s "$dotfiles_dir"/.emacs.d ~/.emacs.d
+}
+
 function fish_cfg() {
     # 安装插件配置
     yay -S --noconfirm fish thefuck autojump
