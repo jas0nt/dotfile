@@ -54,8 +54,8 @@ function pacman_cfg() {
     fi
 
     # 更新系统，并安装一些下载工具
-    sudo pacman -Syyu
-    sudo pacman -S archlinuxcn-keyring yay aria2 uget
+    sudo pacman -Syyu --noconfirm
+    sudo pacman -S --noconfirm archlinuxcn-keyring yay aria2 uget
 
     # 启动定时清理软件包服务
     sudo systemctl enable --now paccache.timer
