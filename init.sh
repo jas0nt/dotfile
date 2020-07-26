@@ -77,13 +77,12 @@ function vim_cfg() {
 }
 
 function emacs_cfg() {
-    yay -S --noconfirm emacs
+    yay -S --noconfirm emacs cmake
 	rm -rf ~/.emacs.d
-	git clone https://github.com/jas0nt/.emacs.d.git ~/.emacs.d
+	git clone --recurse-submodules https://github.com/jas0nt/.emacs.d.git ~/.emacs.d
 }
 
 function fish_cfg() {
-    # 安装插件配置
     yay -S --noconfirm fish thefuck autojump
 	chsh -s $(which fish)
 }
@@ -116,12 +115,6 @@ function desktop_cfg() {
 
     # 其它工具：多媒体播放、多媒体处理、多媒体录制、gif录制、字体修改
     yay -S --noconfirm vlc ffmpeg obs-studio peek fontforge
-
-    # xfce4-terminal配置
-    makedir ~/.config/xfce4/terminal
-    backup ~/.config/xfce4/terminal/terminalrc
-    cp -v xfce4-terminal/terminalrc ~/.config/xfce4/terminal/terminalrc
-
 }
 
 function main() {
@@ -131,11 +124,11 @@ function main() {
     pacman_cfg
 	dot_cfg
     vim_cfg
-    emacs_cfg
     fish_cfg
     im_cfg
     cli_cfg
     desktop_cfg
+    emacs_cfg
 
     echo -e '\e[32m=====> Done\e[m'
 }
