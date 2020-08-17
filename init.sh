@@ -77,7 +77,7 @@ function vim_cfg() {
 }
 
 function emacs_cfg() {
-    yay -S --noconfirm emacs cmake
+    yay -S --noconfirm emacs cmake gcc
 	rm -rf ~/.emacs.d
 	git clone --recurse-submodules https://github.com/jas0nt/.emacs.d.git ~/.emacs.d
 }
