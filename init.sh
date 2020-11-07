@@ -61,10 +61,17 @@ function pacman_cfg() {
     sudo systemctl enable --now paccache.timer
 }
 
-function dot_cfg() {
+function i3_cfg() {
+    yay -S --noconfirm i3 i3exit i3status dmenu pcmanfm
 	rm -rf ~/.i3
-	rm -rf ~/.Xmodmap
 	ln -s "$dotfiles_dir"/.i3 ~/.i3
+	ln -s "$dotfiles_dir"/.i3/wp.jpg ~/Pictures/wp.jpg
+}
+
+function dot_cfg() {
+	backup ~/.Xmodmap
+	backup ~/.xprofile
+	backup ~/.pam_environment
 	ln -s "$dotfiles_dir"/.Xmodmap ~/.Xmodmap
 	ln -s "$dotfiles_dir"/.xprofile ~/.xprofile
 	ln -s "$dotfiles_dir"/.pam_environment ~/.pam_environment
@@ -124,15 +131,16 @@ function main() {
     export dotfiles_dir
     system_cfg
     pacman_cfg
+	i3_cfg
 	dot_cfg
-    vim_cfg
-    fish_cfg
-    im_cfg
-    cli_cfg
-    desktop_cfg
-    emacs_cfg
+	vim_cfg
+	fish_cfg
+	im_cfg
+	cli_cfg
+	desktop_cfg
+	emacs_cfg
 
-    echo -e '\e[32m=====> Done\e[m'
+	echo -e '\e[32m=====> Done\e[m'
 }
 
 main

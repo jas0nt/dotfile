@@ -63,7 +63,7 @@ bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F1 exec emacs
 bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec pcmanfm
-bindsym $mod+F11 exec blurlock && xset dpms force off
+bindsym $mod+F11 exec i3exit lock && xset dpms force off
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec terminal -e 'mocp'
@@ -274,9 +274,8 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-# Lock screen
-bindsym $mod+9 exec --no-startup-id blurlock
-
+# wallpaper
+exec feh --bg-fill ~/Pictures/wp.png
 # Autostart applications
 exec --no-startup-id fcitx5
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -344,17 +343,17 @@ bar {
 #   font xft:URWGothic-Book 11
 	strip_workspace_numbers yes
 
-    colors {
-      background #282A36
-      statusline #F8F8F2
-      separator  #44475A
+	colors {
+		background #282A36
+		statusline #F8F8F2
+		separator  #44475A
 
-      focused_workspace  #44475A #44475A #F8F8F2
-      active_workspace   #282A36 #44475A #F8F8F2
-      inactive_workspace #282A36 #282A36 #BFBFBF
-      urgent_workspace   #FF5555 #FF5555 #F8F8F2
-      binding_mode       #FF5555 #FF5555 #F8F8F2
-    }
+		focused_workspace  #44475A #44475A #F8F8F2
+		active_workspace   #282A36 #44475A #F8F8F2
+		inactive_workspace #282A36 #282A36 #BFBFBF
+		urgent_workspace   #FF5555 #FF5555 #F8F8F2
+		binding_mode       #FF5555 #FF5555 #F8F8F2
+	}
 }
 
 # hide/unhide i3status bar
@@ -362,13 +361,13 @@ bindsym $mod+m bar mode toggle
 
 # Drcula Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-  client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-  client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-  client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-  client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-  
-  client.background       #F8F8F2
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
+client.background       #F8F8F2
 
 #############################
 ### settings for i3-gaps: ###
@@ -427,5 +426,4 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-#bindsym $mod+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'monospace-10' -p 'dmenu%'"
-bindsym $mod+d exec rofi -show run  -lines 5 -eh 2 -opacity "80" 
+bindsym $mod+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'monospace-10' -p 'dmenu%'"
