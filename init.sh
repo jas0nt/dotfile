@@ -65,7 +65,7 @@ function i3_cfg() {
 	yay -S --noconfirm i3 i3exit i3status dmenu pcmanfm
 	rm -rf ~/.i3
 	ln -s "$dotfiles_dir"/.i3 ~/.i3
-	ln -s "$dotfiles_dir"/.i3/wp.jpg ~/Pictures/wp.jpg
+	ln -s "$dotfiles_dir"/.i3/wp.png ~/Pictures/wp.png
 }
 
 function dot_cfg() {
@@ -86,7 +86,7 @@ function vim_cfg() {
 }
 
 function emacs_cfg() {
-	yay -S --noconfirm emacs cmake gcc
+	yay -S --noconfirm emacs cmake make gcc
 	rm -rf ~/.emacs.d
 	git clone --recurse-submodules https://gitee.com/e7a/emacsd.git ~/.emacs.d
 }
@@ -99,7 +99,7 @@ function fish_cfg() {
 
 function im_cfg() {
 	sudo pacman -Rs $(pacman -Qsq fcitx) #remove fcitx4
-	yay -S --noconfirm fcitx5-rime fcitx5-chinese-addons fcitx5-git fcitx5-gtk fcitx5-qt fcitx5-pinyin-zhwiki fcitx5-configtool
+	yay -S --noconfirm librime fcitx5-rime fcitx5-chinese-addons fcitx5-git fcitx5-gtk fcitx5-qt fcitx5-pinyin-zhwiki fcitx5-configtool
 	makedir ~/.local/share/fcitx5/rime
 	ln -s "$dotfiles_dir"/rime/default.custom.yaml ~/.local/share/fcitx5/rime/default.custom.yaml
 	ln -s "$dotfiles_dir"/rime/double_pinyin_flypy.schema.yaml ~/.local/share/fcitx5/rime/double_pinyin_flypy.schema.yaml
@@ -120,8 +120,7 @@ function cli_cfg() {
 
 function desktop_cfg() {
 	# 桌面应用
-	yay -S --noconfirm deepin.com.qq.office netease-cloud-music wps-office ttf-wps-fonts \
-		flameshot firefox guake xfce4-terminal devilspie
+	yay -S --noconfirm deepin.com.qq.office netease-cloud-music wps-office ttf-wps-fonts flameshot firefox guake xfce4-terminal devilspie feh
 	
 	# 其它工具：多媒体播放、多媒体处理、多媒体录制、gif录制、字体修改
 	yay -S --noconfirm vlc ffmpeg obs-studio peek fontforge
