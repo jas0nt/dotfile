@@ -62,7 +62,7 @@ function pacman_cfg() {
 }
 
 function i3_cfg() {
-    yay -S --noconfirm i3 i3exit i3status dmenu pcmanfm
+	yay -S --noconfirm i3 i3exit i3status dmenu pcmanfm
 	rm -rf ~/.i3
 	ln -s "$dotfiles_dir"/.i3 ~/.i3
 	ln -s "$dotfiles_dir"/.i3/wp.jpg ~/Pictures/wp.jpg
@@ -78,20 +78,21 @@ function dot_cfg() {
 }
 
 function vim_cfg() {
-    yay -S --noconfirm vim
-
+	yay -S --noconfirm vim
+	
 	rm -rf ~/.vimrc
 	ln -s "$dotfiles_dir"/.vimrc ~/.vimrc
 
 }
 
 function emacs_cfg() {
-    yay -S --noconfirm emacs cmake gcc
+	yay -S --noconfirm emacs cmake gcc
 	rm -rf ~/.emacs.d
 	git clone --recurse-submodules https://gitee.com/e7a/emacsd.git ~/.emacs.d
+}
 
 function fish_cfg() {
-    yay -S --noconfirm fish thefuck autojump
+	yay -S --noconfirm fish thefuck autojump
 	chsh -s $(which fish)
 }
 
@@ -102,35 +103,35 @@ function im_cfg() {
 	makedir ~/.local/share/fcitx5/rime
 	ln -s "$dotfiles_dir"/rime/default.custom.yaml ~/.local/share/fcitx5/rime/default.custom.yaml
 	ln -s "$dotfiles_dir"/rime/double_pinyin_flypy.schema.yaml ~/.local/share/fcitx5/rime/double_pinyin_flypy.schema.yaml
-
+	
 	ln -s "$dotfiles_dir"/.xprofile ~/.xprofile
 	ln -s "$dotfiles_dir"/.profile ~/.profile
 }
 
 function cli_cfg() {
-    # 安装say, see, terminal-tmux.sh，以及用于say, see修改和查看的cheat-sheets
-    cp -v bin/* ~/.local/bin
-
-    # CLI工具
-    yay -S --noconfirm htop iotop dstat cloc screenfetch figlet cmatrix
-    pip install pip -U
-    pip config set global.index-url https://mirrors.aliyun.com/pypi/simple
+	# 安装say, see, terminal-tmux.sh，以及用于say, see修改和查看的cheat-sheets
+	cp -v bin/* ~/.local/bin
+	
+	# CLI工具
+	yay -S --noconfirm htop iotop dstat cloc screenfetch figlet cmatrix
+	pip install pip -U
+	pip config set global.index-url https://mirrors.aliyun.com/pypi/simple
 }
 
 function desktop_cfg() {
-    # 桌面应用
-    yay -S --noconfirm deepin.com.qq.office netease-cloud-music wps-office ttf-wps-fonts \
-        flameshot firefox guake xfce4-terminal devilspie
-
-    # 其它工具：多媒体播放、多媒体处理、多媒体录制、gif录制、字体修改
-    yay -S --noconfirm vlc ffmpeg obs-studio peek fontforge
+	# 桌面应用
+	yay -S --noconfirm deepin.com.qq.office netease-cloud-music wps-office ttf-wps-fonts \
+		flameshot firefox guake xfce4-terminal devilspie
+	
+	# 其它工具：多媒体播放、多媒体处理、多媒体录制、gif录制、字体修改
+	yay -S --noconfirm vlc ffmpeg obs-studio peek fontforge
 }
 
 function main() {
 	dotfiles_dir=$PWD
-    export dotfiles_dir
-    system_cfg
-    pacman_cfg
+	export dotfiles_dir
+	system_cfg
+	pacman_cfg
 	i3_cfg
 	dot_cfg
 	vim_cfg
@@ -144,3 +145,4 @@ function main() {
 }
 
 main
+
