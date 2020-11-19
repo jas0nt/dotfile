@@ -113,7 +113,7 @@ function cli_cfg() {
 	cp -v bin/* ~/.local/bin
 	
 	# CLI工具
-	yay -S --noconfirm htop iotop dstat cloc screenfetch figlet cmatrix libinput xf86-input-libinput xorg-xinput xdotool
+	yay -S --noconfirm htop iotop dstat cloc screenfetch figlet cmatrix libinput xf86-input-libinput xorg-xinput xdotool ranger
 	pip install pip -U
 	pip config set global.index-url https://mirrors.aliyun.com/pypi/simple
 }
