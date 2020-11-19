@@ -55,16 +55,22 @@ exec --no-startup-id pulseaudio
 ################################################################################################
 
 # Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F1 exec emacs
 bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec pcmanfm
-bindsym $mod+F11 exec i3exit lock && xset dpms force off
-# bindsym $mod+F3 exec ranger
+bindsym $mod+F10 exec i3exit lock && xset dpms force off
+
+# touchpad
+set $TOUCHPAD "Synaptics s3203"
+bindsym $mod+F11 exec xinput disable $TOUCHPAD && xdotool mousemove 9999 9999
+bindsym $mod+F12 exec xinput enable $TOUCHPAD
+exec_always --no-startup-id xinput disable $TOUCHPAD && xdotool mousemove 9999 9999
+
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill compton
