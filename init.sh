@@ -113,14 +113,14 @@ function cli_cfg() {
 	cp -v bin/* ~/.local/bin
 	
 	# CLI工具
-	yay -S --noconfirm htop iotop dstat cloc screenfetch figlet cmatrix libinput xf86-input-libinput xorg-xinput xdotool ranger
+	yay -S --noconfirm htop iotop dstat cloc screenfetch figlet cmatrix libinput xf86-input-libinput xorg-xinput xdotool ranger npm
 	pip install pip -U
 	pip config set global.index-url https://mirrors.aliyun.com/pypi/simple
 }
 
 function desktop_cfg() {
 	# 桌面应用
-	yay -S --noconfirm deepin.com.qq.office netease-cloud-music wps-office ttf-wps-fonts flameshot firefox guake xfce4-terminal devilspie feh
+	yay -S --noconfirm deepin.com.qq.office netease-cloud-music wps-office ttf-wps-fonts ttf-fira-code flameshot firefox guake xfce4-terminal devilspie feh
 	
 	# 其它工具：多媒体播放、多媒体处理、多媒体录制、gif录制、字体修改
 	yay -S --noconfirm vlc ffmpeg obs-studio peek fontforge
