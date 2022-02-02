@@ -62,10 +62,10 @@ function pacman_cfg() {
 }
 
 function i3_cfg() {
-	yay -S --noconfirm i3 i3exit i3status dmenu pcmanfm
+	yay -S --noconfirm i3 i3exit i3status i3lock i3blocks dmenu pcmanfm rofi
 	rm -rf ~/.i3
-	ln -s "$dotfiles_dir"/.i3 ~/.i3
-	ln -s "$dotfiles_dir"/.i3/wp.png ~/Pictures/wp.png
+	ln -s "$dotfiles_dir"/i3-configs ~/.i3
+	chmod -R +x ~/.i3/scripts
 }
 
 function dot_cfg() {
