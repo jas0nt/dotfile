@@ -88,7 +88,7 @@ function vim_cfg() {
 function emacs_cfg() {
 	yay -S --noconfirm emacs cmake make gcc the_silver_searcher expac
 	rm -rf ~/.emacs.d
-	git clone --recurse-submodules https://gitee.com/e7a/emacsd.git ~/.emacs.d
+	git clone --recurse-submodules https://github.com/jas0nt/.emacs.d.git ~/.emacs.d
 }
 
 function fish_cfg() {
