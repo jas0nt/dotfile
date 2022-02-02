@@ -62,7 +62,7 @@ function pacman_cfg() {
 }
 
 function i3_cfg() {
-	yay -S --noconfirm i3 i3exit i3status i3lock i3blocks dmenu pcmanfm rofi
+	yay -S --noconfirm i3 i3exit i3status i3lock i3blocks dmenu pcmanfm rofi feh
 	rm -rf ~/.i3
 	cp -R "$dotfiles_dir"/i3-configs/* ~/.config/
 	chmod -R +x ~/.config/i3/scripts
