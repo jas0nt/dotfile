@@ -61,17 +61,15 @@ function pacman_cfg() {
     sudo systemctl enable --now paccache.timer
 }
 
-function i3_cfg() {
-	yay -S --noconfirm i3 i3exit i3status i3lock i3blocks dmenu pcmanfm rofi feh
-	rm -rf ~/.i3
-	cp -R "$dotfiles_dir"/i3-configs/* ~/.config/
-	chmod -R +x ~/.config/i3/scripts
-}
-
 function dot_cfg() {
+	yay -S --noconfirm i3 i3exit i3status i3lock i3blocks dmenu pcmanfm rofi awesome qtile alacritty
+	backup ~/.config
 	backup ~/.Xmodmap
 	backup ~/.xprofile
 	backup ~/.pam_environment
+
+	ln -s "$dotfiles_dir"/.config ~/.config
+	chmod -R +x ~/.config/i3/scripts
 	ln -s "$dotfiles_dir"/.Xmodmap ~/.Xmodmap
 	ln -s "$dotfiles_dir"/.xprofile ~/.xprofile
 	ln -s "$dotfiles_dir"/.pam_environment ~/.pam_environment
@@ -131,7 +129,6 @@ function main() {
 	export dotfiles_dir
 	system_cfg
 	pacman_cfg
-	i3_cfg
 	dot_cfg
 	vim_cfg
 	fish_cfg
