@@ -171,7 +171,7 @@ bindcode $mod+Shift+90 	 move container to workspace  $ws10
 bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+w kill
 
 # exit-menu
 bindsym $mod+Shift+e exec ~/.config/i3/scripts/powermenu
