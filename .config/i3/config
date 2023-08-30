@@ -5,8 +5,8 @@ set $mod Mod4
 
 workspace_layout default
 new_window pixel 1
-gaps inner 2
-gaps outer 2
+gaps inner 1
+gaps outer 1
 
 floating_modifier $mod
 
@@ -98,7 +98,7 @@ bindsym $mod+Shift+e exec ~/.config/i3/scripts/powermenu
 
 # Lock the system
 # lock by blurring the screen:
-bindsym $mod+F10 exec ~/.config/i3/scripts/blur-lock
+bindsym $mod+F10 exec ~/.config/i3/scripts/blur-lock 
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -200,9 +200,9 @@ bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:"
-set $ws2 "2:"
-set $ws3 "3"
+set $ws1 "1:λ"
+set $ws2 "2:"
+set $ws3 "3:"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
@@ -221,11 +221,13 @@ set $ws10 "10"
 #workspace $ws5 output HDMI-0
 
 # bind program to workspace and focus to them on startup:
-assign [class="Xfce4-terminal"] $ws1
-assign [class="(?i)firefox"] $ws2
+assign [class="emacs"] $ws1
+assign [class="Xfce4-terminal"] $ws2
+assign [class="(?i)firefox"] $ws3
 assign [class="steam"] $ws8
 
 # automatic set focus new window if it opens on another workspace then the current:
+for_window [class=emacs] focus
 for_window [class=Xfce4-terminal] focus
 for_window [class=(?i)firefox] focus
 for_window [class=steam] focus
@@ -322,10 +324,11 @@ set $yellowbrown	#e1b700
 
 # define colors for windows:
 #class		        	border		bground		text		indicator	child_border
-client.focused		    $lightblue	$darkblue	$white		$purple		$mediumgrey
+client.focused		    $purple	$darkblue	$white		$purple		$mediumgrey
 client.unfocused	    $darkblue	$darkblue	$grey		$purple		$darkgrey
 client.focused_inactive	$darkblue	$darkblue	$grey		$purple		$black
 client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
+
 
 ############################################
 # bar settings (input comes from i3blocks) #

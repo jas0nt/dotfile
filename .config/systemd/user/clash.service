@@ -1,0 +1,10 @@
+[Unit]
+Description=fuckGFW
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/clash
+
+[Install]
+WantedBy=multi-user.target
+
