@@ -44,8 +44,8 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 1.0
-  # opacity: 0.80
+  # opacity: 1.0
+  opacity: 0.00
 
   # Window decorations
   #
@@ -187,7 +187,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 10.0
+  size: 14.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -904,7 +904,9 @@ colors: *Dracula
 key_bindings:
     # (Windows, Linux, and BSD only)
   - { key: V,         mods: Control|Shift, action: Paste                       }
+  - { key: V,         mods: Super,         action: Paste                       }
   - { key: C,         mods: Control|Shift, action: Copy                        }
+  - { key: C,         mods: Super,         action: Copy                        }
   - { key: Insert,    mods: Shift,         action: PasteSelection              }
   - { key: Key0,      mods: Control,       action: ResetFontSize               }
   - { key: Equals,    mods: Control,       action: IncreaseFontSize            }

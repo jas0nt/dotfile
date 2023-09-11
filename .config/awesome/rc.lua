@@ -72,7 +72,7 @@ end
 
 local modkey                           = "Mod4"
 local altkey                           = "Mod1"
-local terminal                         = "xfce4-terminal"
+local terminal                         = "alacritty"
 local vi_focus                         = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 local editor                           = os.getenv("EDITOR") or "nvim"
 
@@ -508,6 +508,10 @@ awful.rules.rules = {
     },
     {
         rule = { class = "Xfce4-terminal" },
+        properties = { screen = 1, tag = "2", switchtotag = true }
+    },
+    {
+        rule = { class = "Alacritty" },
         properties = { screen = 1, tag = "2", switchtotag = true }
     },
     {
