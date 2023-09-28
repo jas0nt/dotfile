@@ -165,7 +165,7 @@ theme.volume                                    = lain.widget.alsa({
             volicon:set_image(theme.widget_vol)
         end
 
-        widget:set_markup(markup.font(theme.font, " " .. volume_now.level .. "% "))
+        widget:set_markup(markup.font(theme.font, "" .. volume_now.level .. "% "))
     end
 })
 theme.volume.widget:buttons(awful.util.table.join(
@@ -230,7 +230,7 @@ function theme.at_screen_connect(s)
     s.mywibox = awful.wibar({
         position = "bottom",
         screen = s,
-        height = dpi(18),
+        height = dpi(17),
         bg = theme.bg_normal,
         fg = theme.fg_normal
     })
