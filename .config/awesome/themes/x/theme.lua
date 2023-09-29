@@ -83,118 +83,37 @@ theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/
 
 local markup                                    = lain.util.markup
 local separators                                = lain.util.separators
-
 local keyboardlayout                            = awful.widget.keyboardlayout:new()
 
--- Textclock
-local clockicon                                 = wibox.widget.imagebox(theme.widget_clock)
-local clock                                     = awful.widget.watch(
-    "date +'%a %d/%b %R'", 60,
-    function(widget, stdout)
-        widget:set_markup(" " .. markup.font(theme.font, stdout))
-    end
-)
-
 -- Calendar
-theme.cal                                       = lain.widget.cal({
-    attach_to = { clock },
-    notification_preset = {
-        font = "Terminus 10",
-        fg   = theme.fg_normal,
-        bg   = theme.bg_normal
-    }
+local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
+local mytextclock = wibox.widget.textclock()
+local cw = calendar_widget({
+    theme = 'nord',
+    placement = 'bottom_right',
+    start_sunday = true,
+    radius = 8,
+-- with customized next/previous (see table above)
+    previous_month_button = 1,
+    next_month_button = 3,
 })
-
--- MEM
-local memicon                                   = wibox.widget.imagebox(theme.widget_mem)
-local mem                                       = lain.widget.mem({
-    settings = function()
-        widget:set_markup(markup.font(theme.font, " " .. mem_now.used .. "MB "))
-    end
-})
-
--- CPU
-local cpuicon                                   = wibox.widget.imagebox(theme.widget_cpu)
-local cpu                                       = lain.widget.cpu({
-    settings = function()
-        widget:set_markup(markup.font(theme.font, " " .. cpu_now.usage .. "% "))
-    end
-})
-
--- Coretemp
-local tempicon                                  = wibox.widget.imagebox(theme.widget_temp)
-local temp                                      = lain.widget.temp({
-    settings = function()
-        widget:set_markup(markup.font(theme.font, " " .. coretemp_now .. "°C "))
-    end
-})
-
--- Battery
-local baticon                                   = wibox.widget.imagebox(theme.widget_battery)
-local bat                                       = lain.widget.bat({
-    settings = function()
-        if bat_now.status and bat_now.status ~= "N/A" then
-            if bat_now.ac_status == 1 then
-                baticon:set_image(theme.widget_ac)
-            elseif not bat_now.perc and tonumber(bat_now.perc) <= 5 then
-                baticon:set_image(theme.widget_battery_empty)
-            elseif not bat_now.perc and tonumber(bat_now.perc) <= 15 then
-                baticon:set_image(theme.widget_battery_low)
-            else
-                baticon:set_image(theme.widget_battery)
-            end
-            widget:set_markup(markup.font(theme.font, " " .. bat_now.perc .. "% "))
-        else
-            widget:set_markup(markup.font(theme.font, " AC "))
-            baticon:set_image(theme.widget_ac)
-        end
-    end
-})
-
--- ALSA volume
-local volicon                                   = wibox.widget.imagebox(theme.widget_vol)
-theme.volume                                    = lain.widget.alsa({
-    settings = function()
-        if volume_now.status == "off" then
-            volicon:set_image(theme.widget_vol_mute)
-        elseif tonumber(volume_now.level) == 0 then
-            volicon:set_image(theme.widget_vol_no)
-        elseif tonumber(volume_now.level) <= 50 then
-            volicon:set_image(theme.widget_vol_low)
-        else
-            volicon:set_image(theme.widget_vol)
-        end
-
-        widget:set_markup(markup.font(theme.font, "" .. volume_now.level .. "% "))
-    end
-})
-theme.volume.widget:buttons(awful.util.table.join(
-    awful.button({}, 4, function()
-        awful.util.spawn("amixer set Master 1%+")
-        theme.volume.update()
-    end),
-    awful.button({}, 5, function()
-        awful.util.spawn("amixer set Master 1%-")
-        theme.volume.update()
+mytextclock:connect_signal("button::press",
+    function(_, _, _, button)
+        if button == 1 then cw.toggle() end
     end)
-))
 
--- Net
-local neticon = wibox.widget.imagebox(theme.widget_net)
-local net     = lain.widget.net({
-    settings = function()
-        widget:set_markup(markup.font(theme.font,
-            markup("#7AC82E", " " .. string.format("%06.1f", net_now.received))
-            .. " " ..
-            markup("#46A8C3", " " .. string.format("%06.1f", net_now.sent) .. " ")))
-    end
-})
+-- Volume
+local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
+local vw = volume_widget({widget_type = 'arc', size = dpi(14), thickness = dpi(2), mute_color = theme.fg_focus})
 
 -- Separators
 local spr     = wibox.widget.textbox(' ')
 local arrl_dl = separators.arrow_left(theme.bg_focus, "alpha")
 local arrl_ld = separators.arrow_left("alpha", theme.bg_focus)
 
+
+------
+-- bar
 function theme.at_screen_connect(s)
     -- Quake application
     s.quake = lain.util.quake({ app = awful.util.terminal })
@@ -250,32 +169,11 @@ function theme.at_screen_connect(s)
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
             keyboardlayout,
-            volicon,
-            theme.volume.widget,
-            -- arrl_dl,
-            -- memicon,
-            -- mem.widget,
-            -- arrl_ld,
-            -- wibox.container.background(cpuicon, theme.bg_focus),
-            -- wibox.container.background(cpu.widget, theme.bg_focus),
-            -- arrl_dl,
-            -- tempicon,
-            -- temp.widget,
-            -- arrl_ld,
-            -- wibox.container.background(fsicon, theme.bg_focus),
-            --wibox.container.background(theme.fs.widget, theme.bg_focus),
-            -- arrl_dl,
-            -- baticon,
-            -- bat.widget,
-            -- arrl_ld,
-            -- wibox.container.background(neticon, theme.bg_focus),
-            -- wibox.container.background(net.widget, theme.bg_focus),
-            -- arrl_dl,
-            wibox.container.background(clockicon, theme.bg_focus),
-            clock,
+            vw,
+            mytextclock,
             spr,
             arrl_ld,
-            wibox.container.background(s.mylayoutbox, theme.bg_focus),
+            wibox.container.background(s.mylayoutbox, theme.bg_focus)
         },
     }
 end

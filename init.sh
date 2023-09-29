@@ -55,13 +55,13 @@ function pacman_cfg() {
 }
 
 function dot_cfg() {
-	yay -S --noconfirm awesome dmenu dolphin rofi alacritty
+	yay -S --noconfirm awesome dmenu breeze-icons dolphin rofi alacritty
 	backup ~/.config
 	backup ~/.Xmodmap
 	backup ~/.xprofile
 	backup ~/.pam_environment
 
-	# ln -s "$dotfiles_dir"/.config ~/.config
+	mkdir -p ~/.config
 	ln -s $dotfiles_dir/.config/alacritty ~/.config/alacritty
 	ln -s $dotfiles_dir/.config/awesome ~/.config/awesome
 	ln -s $dotfiles_dir/.config/dunst ~/.config/dunst
@@ -109,7 +109,7 @@ function cli_cfg() {
 
 function desktop_cfg() {
 	# 桌面应用
-	yay -S --noconfirm linuxqq netease-cloud-music wps-office ttf-wps-fonts ttf-fira-code flameshot firefox feh
+	yay -S --noconfirm linuxqq spotify wps-office ttf-wps-fonts ttf-fira-code flameshot firefox feh
 	
 	# 其它工具：多媒体播放、多媒体处理、多媒体录制、gif录制、字体修改
 	yay -S --noconfirm vlc ffmpeg obs-studio peek fontforge
