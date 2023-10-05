@@ -109,7 +109,7 @@ function cli_cfg() {
 
 function desktop_cfg() {
 	# 桌面应用
-	yay -S --noconfirm linuxqq spotify wps-office ttf-wps-fonts ttf-fira-code flameshot firefox feh
+	yay -S --noconfirm linuxqq spotify wps-office ttf-wps-fonts nerd-fonts ttf-fira-code firefox feh
 	
 	# 其它工具：多媒体播放、多媒体处理、多媒体录制、gif录制、字体修改
 	yay -S --noconfirm vlc ffmpeg obs-studio peek fontforge
