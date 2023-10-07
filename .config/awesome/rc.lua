@@ -320,6 +320,12 @@ globalkeys = gears.table.join(
             }
         end,
         { description = "lua execute prompt", group = "awesome" }),
+
+    awful.key({ modkey }, "e", function()
+            awful.util.spawn("dolphin")
+        end,
+        { description = "show the menubar", group = "launcher" }),
+
     -- Menubar
     awful.key({ modkey }, "d", function()
             awful.util.spawn("rofi -show drun -config ~/.config/rofi/dracula.rasi")
