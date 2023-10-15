@@ -55,80 +55,80 @@ function pacman_cfg() {
 }
 
 function dot_cfg() {
-	yay -S --noconfirm awesome dmenu breeze-icons dolphin rofi alacritty
-	backup ~/.config
-	backup ~/.Xmodmap
-	backup ~/.xprofile
-	backup ~/.pam_environment
+    yay -S --noconfirm awesome dmenu breeze-icons dolphin rofi alacritty
+    backup ~/.config
+    backup ~/.Xmodmap
+    backup ~/.xprofile
+    backup ~/.pam_environment
 
-	mkdir -p ~/.config
-	ln -s $dotfiles_dir/.config/alacritty ~/.config/alacritty
-	ln -s $dotfiles_dir/.config/awesome ~/.config/awesome
-	ln -s $dotfiles_dir/.config/dunst ~/.config/dunst
-	ln -s $dotfiles_dir/.config/rofi ~/.config/rofi
-	ln -s $dotfiles_dir/.Xmodmap ~/.Xmodmap
-	ln -s $dotfiles_dir/.xprofile ~/.xprofile
-	ln -s $dotfiles_dir/.profile ~/.profile
-	ln -s $dotfiles_dir/.pam_environment ~/.pam_environment
+    mkdir -p ~/.config
+    ln -s $dotfiles_dir/.config/alacritty ~/.config/alacritty
+    ln -s $dotfiles_dir/.config/awesome ~/.config/awesome
+    ln -s $dotfiles_dir/.config/dunst ~/.config/dunst
+    ln -s $dotfiles_dir/.config/rofi ~/.config/rofi
+    ln -s $dotfiles_dir/.Xmodmap ~/.Xmodmap
+    ln -s $dotfiles_dir/.xprofile ~/.xprofile
+    ln -s $dotfiles_dir/.profile ~/.profile
+    ln -s $dotfiles_dir/.pam_environment ~/.pam_environment
 }
 
 function vim_cfg() {
-	yay -S --noconfirm vim
+    yay -S --noconfirm vim
 	
-	rm -rf ~/.vimrc
-	ln -s "$dotfiles_dir"/.vimrc ~/.vimrc
+    rm -rf ~/.vimrc
+    ln -s "$dotfiles_dir"/.vimrc ~/.vimrc
 
 }
 
 function emacs_cfg() {
-	yay -S --noconfirm emacs cmake make gcc the_silver_searcher expac
-	rm -rf ~/.emacs.d
-	git clone --recurse-submodules https://github.com/jas0nt/.emacs.d.git ~/.emacs.d
+    yay -S --noconfirm emacs cmake make gcc the_silver_searcher expac
+    rm -rf ~/.emacs.d
+    git clone --recurse-submodules https://github.com/jas0nt/.emacs.d.git ~/.emacs.d
 }
 
 function fish_cfg() {
-	yay -S --noconfirm fish thefuck autojump
-	chsh -s $(which fish)
+    yay -S --noconfirm fish thefuck autojump
+    chsh -s $(which fish)
 }
 
 
 function im_cfg() {
-	sudo pacman -Rs $(pacman -Qsq fcitx) #remove fcitx4
-	yay -S --noconfirm librime fcitx5-rime fcitx5-chinese-addons fcitx5-git fcitx5-gtk fcitx5-qt fcitx5-pinyin-zhwiki fcitx5-configtool
-	makedir ~/.local/share/fcitx5/rime
-	ln -s $dotfiles_dir/rime/default.custom.yaml ~/.local/share/fcitx5/rime/default.custom.yaml
-	ln -s $dotfiles_dir/rime/double_pinyin_flypy.schema.yaml ~/.local/share/fcitx5/rime/double_pinyin_flypy.schema.yaml
+    sudo pacman -Rs $(pacman -Qsq fcitx) #remove fcitx4
+    yay -S --noconfirm librime fcitx5-rime fcitx5-chinese-addons fcitx5-git fcitx5-gtk fcitx5-qt fcitx5-pinyin-zhwiki fcitx5-configtool
+    makedir ~/.local/share/fcitx5/rime
+    ln -s $dotfiles_dir/rime/default.custom.yaml ~/.local/share/fcitx5/rime/default.custom.yaml
+    ln -s $dotfiles_dir/rime/double_pinyin_flypy.schema.yaml ~/.local/share/fcitx5/rime/double_pinyin_flypy.schema.yaml
 }
 
 function cli_cfg() {
-	# CLI工具
-	yay -S --noconfirm htop neofetch figlet cmatrix libinput xf86-input-libinput xorg-xinput xdotool ranger npm
-	pip install pip -U
-	pip config set global.index-url https://mirrors.aliyun.com/pypi/simple
+    # CLI工具
+    yay -S --noconfirm htop neofetch figlet cmatrix libinput xf86-input-libinput xorg-xinput xdotool ranger npm
+    pip install pip -U
+    pip config set global.index-url https://mirrors.aliyun.com/pypi/simple
 }
 
 function desktop_cfg() {
-	# 桌面应用
-	yay -S --noconfirm linuxqq spotify wps-office ttf-wps-fonts nerd-fonts ttf-fira-code firefox feh
-	
-	# 其它工具：多媒体播放、多媒体处理、多媒体录制、gif录制、字体修改
-	yay -S --noconfirm vlc ffmpeg obs-studio peek fontforge
+    # 桌面应用
+    yay -S --noconfirm linuxqq netease-cloud-music wps-office ttf-wps-fonts nerd-fonts ttf-fira-code firefox feh
+    
+    # 其它工具：多媒体播放、多媒体处理、多媒体录制、gif录制、字体修改
+    yay -S --noconfirm vlc ffmpeg obs-studio peek fontforge
 }
 
 function main() {
-	dotfiles_dir=$PWD
-	export dotfiles_dir
-	# system_cfg
-	pacman_cfg
-	dot_cfg
-	# vim_cfg
-	fish_cfg
-	im_cfg
-	cli_cfg
-	desktop_cfg
-	emacs_cfg
+    dotfiles_dir=$PWD
+    export dotfiles_dir
+    # system_cfg
+    pacman_cfg
+    dot_cfg
+    # vim_cfg
+    fish_cfg
+    im_cfg
+    cli_cfg
+    desktop_cfg
+    emacs_cfg
 
-	echo -e '\e[32m=====> Done\e[m'
+    echo -e '\e[32m=====> Done\e[m'
 }
 
 main
