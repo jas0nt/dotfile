@@ -10,7 +10,7 @@ local my_table                                  = awful.util.table or gears.tabl
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/x"
 theme.wallpaper                                 = theme.dir .. "/wall.jpg"
-theme.font                                      = "Source Code Pro 9"
+theme.font                                      = "Source Code Pro " .. dpi(5)
 theme.fg_normal                                 = "#DDDDFF"
 theme.fg_focus                                  = "#bd93f9"
 theme.fg_urgent                                 = "#CC9393"
@@ -21,7 +21,8 @@ theme.border_width                              = dpi(1.5)
 theme.border_normal                             = "#3F3F3F"
 theme.border_focus                              = "#ff79c6"
 theme.border_marked                             = "#CC9393"
-theme.tasklist_bg_focus                         = "#1A1A1A" .. "00"
+theme.tasklist_bg_focus                         = theme.bg_urgent
+theme.tasklist_bg_normal                        = theme.bg_normal
 theme.titlebar_bg_focus                         = theme.bg_focus
 theme.titlebar_bg_normal                        = theme.bg_normal
 theme.titlebar_fg_focus                         = theme.fg_focus
@@ -149,8 +150,8 @@ function theme.at_screen_connect(s)
     s.mywibox = awful.wibar({
         position = "bottom",
         screen = s,
-        height = dpi(17),
-        bg = theme.bg_normal .. "00",
+        height = dpi(16),
+        bg = theme.bg_normal,
         fg = theme.fg_normal
     })
 
