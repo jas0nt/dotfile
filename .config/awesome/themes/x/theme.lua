@@ -17,15 +17,15 @@ theme.fg_urgent                                 = "#CC9393"
 theme.bg_normal                                 = "#1A1A1A"
 theme.bg_focus                                  = "#313131"
 theme.bg_urgent                                 = "#1A1A1A"
-theme.border_width                              = dpi(1)
+theme.border_width                              = dpi(1.5)
 theme.border_normal                             = "#3F3F3F"
 theme.border_focus                              = "#ff79c6"
 theme.border_marked                             = "#CC9393"
-theme.tasklist_bg_focus                         = "#1A1A1A"
+theme.tasklist_bg_focus                         = "#1A1A1A" .. "00"
 theme.titlebar_bg_focus                         = theme.bg_focus
 theme.titlebar_bg_normal                        = theme.bg_normal
 theme.titlebar_fg_focus                         = theme.fg_focus
-theme.menu_height                               = dpi(16)
+theme.menu_height                               = dpi(10)
 theme.menu_width                                = dpi(140)
 theme.menu_submenu_icon                         = theme.dir .. "/icons/submenu.png"
 theme.taglist_squares_sel                       = theme.dir .. "/icons/square_sel.png"
@@ -150,7 +150,7 @@ function theme.at_screen_connect(s)
         position = "bottom",
         screen = s,
         height = dpi(17),
-        bg = theme.bg_normal,
+        bg = theme.bg_normal .. "00",
         fg = theme.fg_normal
     })
 
