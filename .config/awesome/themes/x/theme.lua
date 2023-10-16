@@ -1,5 +1,5 @@
 local gears                                     = require("gears")
-local lain                                      = require("lain")
+-- local lain                                      = require("lain")
 local awful                                     = require("awful")
 local wibox                                     = require("wibox")
 local dpi                                       = require("beautiful.xresources").apply_dpi
@@ -82,44 +82,23 @@ theme.titlebar_maximized_button_normal_active   = theme.dir .. "/icons/titlebar/
 theme.titlebar_maximized_button_focus_inactive  = theme.dir .. "/icons/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/maximized_normal_inactive.png"
 
-local markup                                    = lain.util.markup
-local separators                                = lain.util.separators
+-- local markup                                    = lain.util.markup
+-- local separators                                = lain.util.separators
 local keyboardlayout                            = awful.widget.keyboardlayout:new()
 
--- Calendar
-local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
-local mytextclock = wibox.widget.textclock()
-local cw = calendar_widget({
-    theme = 'nord',
-    placement = 'bottom_right',
-    start_sunday = true,
-    radius = 8,
--- with customized next/previous (see table above)
-    previous_month_button = 1,
-    next_month_button = 3,
-})
-mytextclock:connect_signal("button::press",
-    function(_, _, _, button)
-        if button == 1 then cw.toggle() end
-    end)
-
--- Volume
-local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
-local vw = volume_widget({widget_type = 'arc', size = dpi(14), thickness = dpi(2), mute_color = theme.fg_focus})
-
--- Separators
-local spr     = wibox.widget.textbox(' ')
-local arrl_dl = separators.arrow_left(theme.bg_focus, "alpha")
-local arrl_ld = separators.arrow_left("alpha", theme.bg_focus)
+-- Textclock
+-- local mytextclock = wibox.widget.textclock(markup(theme.fg_normal, " <b>%a</b> %b%d %H:%M"))
+local mytextclock = wibox.widget.textclock(" <b>%a</b> %b%d %H:%M")
+mytextclock.font = theme.font
 
 
 ------
 -- bar
 function theme.at_screen_connect(s)
     -- Quake application
-    s.quake = lain.util.quake({ app = awful.util.terminal })
+    -- s.quake = lain.util.quake({ app = awful.util.terminal })
 
-    -- If wallpaper is a function, call it with the screen
+    -- wallpaper is a function, call it with the screen
     local wallpaper = theme.wallpaper
     if type(wallpaper) == "function" then
         wallpaper = wallpaper(s)
@@ -163,17 +142,13 @@ function theme.at_screen_connect(s)
             --spr,
             s.mytaglist,
             s.mypromptbox,
-            spr,
         },
         s.mytasklist, -- Middle widget
         {             -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
-            keyboardlayout,
-            vw,
+            -- keyboardlayout,
             mytextclock,
-            spr,
-            arrl_ld,
             wibox.container.background(s.mylayoutbox, theme.bg_focus)
         },
     }

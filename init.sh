@@ -55,7 +55,7 @@ function pacman_cfg() {
 }
 
 function dot_cfg() {
-    yay -S --noconfirm awesome dmenu breeze-icons dolphin rofi alacritty
+    yay -S --noconfirm awesome dmenu breeze-icons dolphin rofi alacritty volumeicon
     backup ~/.config
     backup ~/.Xmodmap
     backup ~/.xprofile
@@ -102,7 +102,7 @@ function im_cfg() {
 
 function cli_cfg() {
     # CLI工具
-    yay -S --noconfirm htop neofetch figlet cmatrix libinput xf86-input-libinput xorg-xinput xdotool ranger npm
+    yay -S --noconfirm htop neofetch figlet cmatrix libinput xf86-input-libinput xorg-xinput xdotool ranger ripgrep fzf npm
     pip install pip -U
     pip config set global.index-url https://mirrors.aliyun.com/pypi/simple
 }

@@ -8,3 +8,4 @@ export QT_IM_MODULE=fcitx5
 export XMODIFIERS=@im=fcitx5
 
 feh -bg-fill ~/Pictures/wallpaper/wp.jpg
+. "$HOME/.cargo/env"
