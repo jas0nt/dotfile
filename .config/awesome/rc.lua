@@ -522,6 +522,10 @@ awful.rules.rules = {
         properties = { screen = 1, tag = "2", switchtotag = true }
     },
     {
+        rule = { class = "Microsoft-edge" },
+        properties = { screen = 1, tag = "3", switchtotag = true }
+    },
+    {
         rule = { class = "firefox" },
         properties = { screen = 1, tag = "3", switchtotag = true }
     },
