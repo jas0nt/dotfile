@@ -641,8 +641,7 @@ local autorun = true
 local autorunApps =
 {
     "picom",
-    "firefox",
-    "volumeicon",
+    "microsoft-edge-stable",
 }
 if autorun then
     for app = 1, #autorunApps do
