@@ -70,15 +70,15 @@ end
 
 -- {{{ Variable definitions
 
-local modkey                           = "Mod4"
-local altkey                           = "Mod1"
-local terminal                         = "alacritty"
-local vi_focus                         = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
-local editor                           = os.getenv("EDITOR") or "vim"
+local modkey                = "Mod4"
+local altkey                = "Mod1"
+local terminal              = "alacritty"
+local vi_focus              = false            -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
+local editor                = os.getenv("EDITOR") or "vim"
 
-awful.util.terminal                    = terminal
-awful.util.tagnames                    = { "λ", "2", "3", "4", "5", "6", "7", "8", "9", "0" }
-awful.layout.layouts                   = {
+awful.util.terminal         = terminal
+awful.util.tagnames         = { "λ", "2", "3", "4", "5", "6", "7", "8", "9", "0" }
+awful.layout.layouts        = {
     awful.layout.suit.tile,
     awful.layout.suit.max,
     awful.layout.suit.floating,
@@ -113,7 +113,7 @@ awful.layout.layouts                   = {
 -- lain.layout.cascade.tile.nmaster       = 5
 -- lain.layout.cascade.tile.ncol          = 2
 
-awful.util.taglist_buttons             = mytable.join(
+awful.util.taglist_buttons  = mytable.join(
     awful.button({}, 1, function(t) t:view_only() end),
     awful.button({ modkey }, 1, function(t)
         if client.focus then client.focus:move_to_tag(t) end
@@ -126,7 +126,7 @@ awful.util.taglist_buttons             = mytable.join(
     awful.button({}, 5, function(t) awful.tag.viewprev(t.screen) end)
 )
 
-awful.util.tasklist_buttons            = mytable.join(
+awful.util.tasklist_buttons = mytable.join(
     awful.button({}, 1, function(c)
         if c == client.focus then
             c.minimized = true
@@ -636,11 +636,12 @@ tag.connect_signal("property::selected", backham)
 local autorun = true
 local autorunApps =
 {
-   "firefox",
-   "volumeicon",
+    "picom",
+    "firefox",
+    "volumeicon",
 }
 if autorun then
-   for app = 1, #autorunApps do
-       awful.util.spawn(autorunApps[app])
-   end
+    for app = 1, #autorunApps do
+        awful.util.spawn(autorunApps[app])
+    end
 end

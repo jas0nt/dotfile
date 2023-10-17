@@ -94,7 +94,7 @@ function fish_cfg() {
 
 function im_cfg() {
     sudo pacman -Rs $(pacman -Qsq fcitx) #remove fcitx4
-    yay -S --noconfirm librime fcitx5-rime fcitx5-chinese-addons fcitx5-git fcitx5-gtk fcitx5-qt fcitx5-pinyin-zhwiki fcitx5-configtool
+    yay -S --noconfirm librime fcitx5-rime fcitx5-chinese-addons fcitx5-git fcitx5-gtk fcitx5-qt fcitx5-pinyin-zhwiki fcitx5-configtool noto-fonts-cjk noto-fonts-emoji
     makedir ~/.local/share/fcitx5/rime
     ln -s $dotfiles_dir/rime/default.custom.yaml ~/.local/share/fcitx5/rime/default.custom.yaml
     ln -s $dotfiles_dir/rime/double_pinyin_flypy.schema.yaml ~/.local/share/fcitx5/rime/double_pinyin_flypy.schema.yaml
