@@ -77,7 +77,7 @@ local vi_focus              = false            -- vi-like client focus https://g
 local editor                = os.getenv("EDITOR") or "vim"
 
 awful.util.terminal         = terminal
-awful.util.tagnames         = { "λ", "2", "3", "4", "5", "6", "7", "8", "9", "0" }
+awful.util.tagnames         = { "λ", "2", "3", "4", "5", "6", "7", "8", "9", "x" }
 awful.layout.layouts        = {
     awful.layout.suit.tile,
     awful.layout.suit.max,
@@ -226,7 +226,7 @@ globalkeys = gears.table.join(
         { description = "Volumn Down", group = "awesome" }),
     awful.key({}, "XF86AudioMute", function() awful.util.spawn("amixer -D pulse sset Master toggle") end,
         { description = "Volumn Mute", group = "awesome" }),
-    awful.key({ modkey, }, "s", hotkeys_popup.show_help,
+    awful.key({ modkey, "Shift" }, "s", hotkeys_popup.show_help,
         { description = "show help", group = "awesome" }),
     awful.key({ modkey, }, "Left", awful.tag.viewprev,
         { description = "view previous", group = "tag" }),
@@ -324,8 +324,12 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "e", function()
             awful.util.spawn("dolphin")
         end,
-        { description = "show the menubar", group = "launcher" }),
+        { description = "Files", group = "launcher" }),
 
+    awful.key({ modkey }, "s", function()
+            awful.util.spawn("rofi -show window -config ~/.config/rofi/dracula.rasi")
+        end,
+        { description = "switch windows", group = "launcher" }),
     -- Menubar
     awful.key({ modkey }, "d", function()
             awful.util.spawn("rofi -show drun -config ~/.config/rofi/dracula.rasi")
