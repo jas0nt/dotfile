@@ -322,7 +322,7 @@ globalkeys = gears.table.join(
         { description = "lua execute prompt", group = "awesome" }),
 
     awful.key({ modkey }, "e", function()
-            awful.util.spawn("dolphin")
+            awful.util.spawn(awful.util.terminal .. " --class ranger -e ranger" )
         end,
         { description = "Files", group = "launcher" }),
 
@@ -334,7 +334,11 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "d", function()
             awful.util.spawn("rofi -show drun -config ~/.config/rofi/dracula.rasi")
         end,
-        { description = "show the menubar", group = "launcher" })
+        { description = "show the menubar", group = "awesome" }),
+    awful.key({ modkey }, "z", function()
+            awful.screen.focused().mywibox.visible = not awful.screen.focused().mywibox.visible
+        end,
+        { description = "toggle wibar", group = "awesome" })
 )
 
 clientkeys = gears.table.join(
@@ -495,6 +499,7 @@ awful.rules.rules = {
             -- and the name shown there might not match defined rules here.
             name = {
                 "Event Tester", -- xev.
+                "新建任务面板",
             },
             role = {
                 "AlarmWindow",   -- Thunderbird's calendar.
@@ -534,6 +539,14 @@ awful.rules.rules = {
         properties = { screen = 1, tag = "3", switchtotag = true }
     },
     {
+        rule = { class = "ranger" },
+        properties = { screen = 1, tag = "4", switchtotag = true }
+    },
+    {
+        rule = { class = "dolphin" },
+        properties = { screen = 1, tag = "4", switchtotag = true }
+    },
+    {
         rule = { class = "steam" },
         properties = { screen = 1, tag = "8", switchtotag = true }
     },
@@ -543,11 +556,11 @@ awful.rules.rules = {
     },
     {
         rule = { class = "wechat.exe" },
-        properties = { screen = 1, tag = "0", switchtotag = true }
+        properties = { screen = 1, tag = "x", switchtotag = true }
     },
     {
         rule = { class = "QQ" },
-        properties = { screen = 1, tag = "0", switchtotag = true }
+        properties = { screen = 1, tag = "x", switchtotag = true }
     },
 }
 
