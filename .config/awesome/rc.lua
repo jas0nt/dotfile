@@ -216,15 +216,15 @@ root.buttons(mytable.join(
 -- {{{ Key bindings
 -- bindsym XF86AudioMute exec amixer sset Master toggle && killall -USR1 i3blocks
 globalkeys = gears.table.join(
-    awful.key({ modkey, }, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer -D pulse sset Master 1%+") end,
+    awful.key({ modkey, }, "XF86AudioRaiseVolume", function() awful.util.spawn("pulsemixer --change-volume +1") end,
         { description = "Volumn Up", group = "awesome" }),
-    awful.key({ modkey, }, "XF86AudioLowerVolume", function() awful.util.spawn("amixer -D pulse sset Master 1%-") end,
+    awful.key({ modkey, }, "XF86AudioLowerVolume", function() awful.util.spawn("pulsemixer --change-volume -1") end,
         { description = "Volumn Down", group = "awesome" }),
-    awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer -D pulse sset Master 5%+") end,
+    awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("pulsemixer --change-volume +5") end,
         { description = "Volumn Up", group = "awesome" }),
-    awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("amixer -D pulse sset Master 5%-") end,
+    awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("pulsemixer --change-volume -5") end,
         { description = "Volumn Down", group = "awesome" }),
-    awful.key({}, "XF86AudioMute", function() awful.util.spawn("amixer -D pulse sset Master toggle") end,
+    awful.key({}, "XF86AudioMute", function() awful.util.spawn("pulsemixer --toggle-mute") end,
         { description = "Volumn Mute", group = "awesome" }),
     awful.key({ modkey, "Shift" }, "s", hotkeys_popup.show_help,
         { description = "show help", group = "awesome" }),
@@ -325,6 +325,11 @@ globalkeys = gears.table.join(
             awful.util.spawn(awful.util.terminal .. " --class ranger -e ranger" )
         end,
         { description = "Files", group = "launcher" }),
+
+    awful.key({ modkey }, "p", function()
+            awful.util.spawn(awful.util.terminal .. " --class pulsemixer -e pulsemixer" )
+        end,
+        { description = "Audio", group = "launcher" }),
 
     awful.key({ modkey }, "s", function()
             awful.util.spawn("rofi -show window -config ~/.config/rofi/dracula.rasi")
@@ -658,7 +663,7 @@ local autorun = true
 local autorunApps =
 {
     "picom",
-    "microsoft-edge-stable",
+    "firefox",
 }
 if autorun then
     for app = 1, #autorunApps do

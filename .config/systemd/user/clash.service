@@ -3,7 +3,7 @@ Description=fuckGFW
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/clash
+ExecStart=/home/jason/.nix-profile/bin/clash
 
 [Install]
 WantedBy=default.target

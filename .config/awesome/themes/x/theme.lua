@@ -10,7 +10,7 @@ local my_table                                  = awful.util.table or gears.tabl
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/x"
 theme.wallpaper                                 = theme.dir .. "/wall"
-theme.font                                      = "Source Code Pro " .. dpi(5)
+theme.font                                      = "Source Code Pro " .. dpi(6)
 theme.fg_normal                                 = "#DDDDFF"
 theme.fg_focus                                  = "#bd93f9"
 theme.fg_urgent                                 = "#CC9393"
@@ -130,7 +130,7 @@ function theme.at_screen_connect(s)
         visible = true,
         position = "bottom",
         screen = s,
-        height = dpi(16),
+        height = dpi(18),
         bg = theme.bg_normal,
         fg = theme.fg_normal
     })
